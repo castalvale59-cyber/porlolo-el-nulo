@@ -75,17 +75,20 @@ const RENDER = {
   progression: renderProgression,
   regles: renderRegles,
   quiz: renderQuiz,
-  jouer: () => Babyfoot.show()
+  jouer: (params) => Jeu.show(params)
 };
 
 function route() {
-  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "accueil";
+  // Le hash peut porter des paramètres : #jouer?salon=BZK4
+  const [name, query = ""] = location.hash.slice(1).split("?");
+  const params = Object.fromEntries(new URLSearchParams(query));
+  const v = VIEWS.includes(name) ? name : "accueil";
   document.querySelectorAll(".view").forEach((s) => { s.hidden = s.dataset.view !== v; });
   document.querySelectorAll("[data-nav]").forEach((a) => {
     if (a.dataset.nav === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
   });
-  if (v !== "jouer") Babyfoot.hide();
-  RENDER[v]();
+  if (v !== "jouer") Jeu.hide();
+  RENDER[v](params);
   window.scrollTo({ top: 0 });
 }
 

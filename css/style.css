@@ -532,3 +532,59 @@ td.notes { white-space: normal; min-width: 160px; }
   .game-controls .btn { padding: 9px 12px; font-size: .9rem; }
   .shoot-btn { flex: 1 1 100%; order: -1; margin-left: 0; padding: 14px; font-size: 1.15rem; }
 }
+
+/* ---------------- Multijoueur ---------------- */
+.mode-switch { margin-bottom: 16px; }
+.mode-switch .chip { font-size: 1rem; padding: 9px 16px; }
+.multi-body { margin-bottom: 20px; }
+.multi-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.multi-cards .panel { margin-bottom: 0; display: flex; flex-direction: column; align-items: flex-start; }
+.multi-cards .panel .btn { margin-top: auto; }
+.m-input {
+  width: 100%; max-width: 360px; padding: 11px 13px; border-radius: 10px; border: 2px solid var(--line);
+  background: var(--card); font-size: 1.05rem;
+}
+.m-input:focus { border-color: var(--ink); outline: none; }
+.join-line { display: flex; gap: 10px; width: 100%; margin-top: auto; }
+.code-input { font-family: var(--font-display); letter-spacing: .25em; text-transform: uppercase; max-width: 160px; text-align: center; }
+.small { font-size: .85rem; }
+.small-btn { padding: 7px 12px; font-size: .88rem; }
+.loading { font-weight: 700; }
+.loading::after { content: " ⚽"; display: inline-block; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.salon-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+.salon-host { display: grid; grid-template-columns: minmax(240px, 1fr) 1.5fr; gap: 20px; }
+.code-panel { text-align: center; }
+.salon-code {
+  font-family: var(--font-display); font-size: clamp(3rem, 10vw, 5rem); letter-spacing: .12em; line-height: 1;
+  margin: 4px 0 12px; color: var(--felt);
+}
+.qr { width: 168px; height: 168px; margin: 0 auto 10px; background: #fff; border-radius: 10px; padding: 6px; }
+.qr svg { width: 100%; height: 100%; display: block; }
+.players { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.player { background: var(--bg-2); border-radius: 999px; padding: 6px 12px; font-weight: 700; animation: pop .25s ease; }
+.player.me { background: var(--accent); color: var(--accent-ink); }
+.player small { font-weight: 500; opacity: .75; }
+@keyframes pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+.host-opts { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 14px; }
+.host-opts select { padding: 7px 10px; border-radius: 8px; border: 2px solid var(--line); background: var(--card); }
+.panel.live { border-color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent), var(--shadow); }
+.champion { text-align: center; }
+.champ-cup { font-size: 3.5rem; margin: 0; line-height: 1.1; }
+.bracket { display: flex; gap: 18px; overflow-x: auto; padding-bottom: 8px; position: relative; }
+.b-round { display: flex; flex-direction: column; justify-content: space-around; gap: 12px; min-width: 190px; }
+.b-title { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 0; }
+.bm { border: 2px solid var(--line); border-radius: 10px; background: var(--card); overflow: hidden; font-size: .9rem; }
+.bm.mine { border-color: var(--accent); }
+.bm.st-en_cours { border-color: var(--good); }
+.bm-p { display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.bm-p span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bm-p.win { font-weight: 800; background: color-mix(in srgb, var(--good) 12%, transparent); }
+.bm-p em { color: var(--muted); font-weight: 400; }
+.bm-st { font-size: .74rem; color: var(--muted); padding: 4px 10px; background: var(--bg-2); }
+.st-en_cours .bm-st { color: var(--good); font-weight: 700; }
+@media (max-width: 720px) {
+  .multi-cards, .salon-host { grid-template-columns: 1fr; }
+  .join-line { flex-wrap: wrap; }
+  .code-input { max-width: none; flex: 1; }
+}

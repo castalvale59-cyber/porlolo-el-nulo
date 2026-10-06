@@ -229,10 +229,15 @@
     <!-- ================= JOUER ================= -->
     <section class="view" data-view="jouer" hidden>
       <div class="view-head">
-        <h2 class="view-title">Jouer contre le bot</h2>
-        <p class="muted">Babyfoot Bonzini vu de dessus. Tu es en <span class="dot dot-red"></span> rouge et tu attaques vers la droite. Choisis ton adversaire et montre que tu n'es pas Lolo.</p>
+        <h2 class="view-title">Jouer</h2>
+        <p class="muted">Babyfoot Bonzini vu de dessus. Tu es toujours en <span class="dot dot-red"></span> rouge et tu attaques vers la droite. Contre le bot, ou contre tes potes en ligne.</p>
       </div>
-      <div class="game-bar">
+      <div class="chips mode-switch" id="modeSwitch" role="group" aria-label="Mode de jeu">
+        <button type="button" class="chip" data-mode="solo" aria-pressed="true">🤖 Contre le bot</button>
+        <button type="button" class="chip" data-mode="multi" aria-pressed="false">👥 Multijoueur</button>
+      </div>
+      <div id="multiBody" class="multi-body" data-only="multi" hidden></div>
+      <div class="game-bar" data-only="solo">
         <div class="chips" id="botLevels" role="group" aria-label="Niveau du bot"></div>
         <label class="game-target">Partie en
           <select id="gameTarget">
@@ -241,11 +246,11 @@
           </select>
         </label>
       </div>
-      <p class="muted bot-desc" id="botDesc"></p>
+      <p class="muted bot-desc" id="botDesc" data-only="solo"></p>
 
       <div class="game-wrap" id="gameWrap">
         <div class="scoreboard" aria-live="polite">
-          <span class="sb-team sb-red">Toi</span>
+          <span class="sb-team sb-red" id="meName">Toi</span>
           <span class="sb-score" id="scoreRed">0</span>
           <span class="sb-sep">-</span>
           <span class="sb-score" id="scoreBlue">0</span>
@@ -253,8 +258,8 @@
         </div>
         <canvas id="game" tabindex="0" aria-label="Table de babyfoot. Bouge la souris ou ton doigt pour déplacer tes barres, clique ou tape pour tirer."></canvas>
         <div class="game-controls">
-          <button type="button" class="btn btn-primary" id="gameStart">Jouer</button>
-          <button type="button" class="btn btn-ghost" id="gamePause">Pause</button>
+          <button type="button" class="btn btn-primary" id="gameStart" data-only="solo">Jouer</button>
+          <button type="button" class="btn btn-ghost" id="gamePause" data-only="solo">Pause</button>
           <button type="button" class="btn btn-ghost" id="gameSound">🔊 Son</button>
           <button type="button" class="btn btn-ghost" id="gameFull">⤢ Plein écran</button>
           <button type="button" class="btn btn-primary shoot-btn" id="gameShoot">💥 TIRER</button>
@@ -262,11 +267,12 @@
         <p class="commentary" id="commentary">Choisis un niveau et clique sur « Jouer ».</p>
       </div>
 
-      <div class="stat-row" id="botRecord"></div>
+      <div class="stat-row" id="botRecord" data-only="solo"></div>
 
       <div class="panel">
         <h3>Comment jouer</h3>
         <ul class="how">
+          <li><strong>Multijoueur :</strong> l'hôte crée un salon et donne le code (ou fait scanner le QR code). Les autres choisissent un pseudo, entrent le code, et c'est parti. Pas de compte. À 2, c'est un match ; de 3 à 16, un tournoi est tiré au sort, avec 2 tables en même temps. Reste sur l'onglet pendant ton match.</li>
           <li><strong>Ordi :</strong> bouge la souris de haut en bas pour déplacer tes 4 barres, <strong>clic</strong> pour tirer. Au clavier : flèches ↑ ↓ (ou Z / S) et <strong>Espace</strong>. <strong>P</strong> = pause.</li>
           <li><strong>Téléphone :</strong> glisse le doigt sur la table pour déplacer tes barres, <strong>tape</strong> sur la table ou sur « TIRER » pour frapper. Le mode plein écran aide beaucoup.</li>
           <li><strong>Tirs en angle (push / pull) :</strong> bouge tes barres <em>pendant</em> que tu tires, la balle part en diagonale. Touche la balle avec le bord du joueur pour l'angler aussi.</li>
@@ -297,7 +303,10 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/moteur.js"></script>
+  <script src="js/config.js"></script>
   <script src="js/jeu.js"></script>
+  <script src="js/multi.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
