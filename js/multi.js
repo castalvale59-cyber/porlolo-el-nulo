@@ -924,4 +924,4 @@ const Multi = (() => {
   };
 })();
 
-if (typeof module !== "undefined") module.exports = { createSalon, buildBracket, roundName };
+if (typeof module !== "undefined") module.exports = { createSalon, buildBracket, roundName, Reseau };
