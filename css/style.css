@@ -486,3 +486,49 @@ td.notes { white-space: normal; min-width: 160px; }
   .session-form .wide { grid-column: 1 / -1; }
   .rod-ticks button { font-size: .66rem; }
 }
+
+/* ---------------- Jouer (babyfoot contre le bot) ---------------- */
+.nav a.nav-play { color: var(--accent); font-weight: 700; }
+.nav a.nav-play[aria-current="page"] { color: var(--accent-ink); }
+.game-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.game-target { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+.game-target select { padding: 8px 10px; border-radius: 10px; border: 2px solid var(--line); background: var(--card); }
+.bot-desc { margin: 6px 0 14px; }
+.game-wrap {
+  background: var(--ink); border-radius: 20px; padding: 14px; margin-bottom: 20px; box-shadow: var(--shadow);
+}
+.scoreboard {
+  display: flex; align-items: center; justify-content: center; gap: 14px; color: #fff; margin-bottom: 10px;
+  font-family: var(--font-display);
+}
+.sb-team { font-size: .95rem; padding: 4px 10px; border-radius: 8px; }
+.sb-red { background: var(--red); }
+.sb-blue { background: var(--blue); }
+.sb-score { font-size: 2.1rem; line-height: 1; min-width: 1.6ch; text-align: center; }
+.sb-sep { opacity: .6; font-size: 1.6rem; }
+#game {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 14px;
+  touch-action: none; cursor: crosshair; outline: none;
+}
+#game:focus-visible { box-shadow: 0 0 0 3px var(--accent); }
+.game-controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.game-controls .btn-ghost { border-color: rgba(255,255,255,.5); color: #fff; }
+.game-controls .btn-ghost:hover { background: rgba(255,255,255,.1); }
+.game-controls .btn:disabled { opacity: .4; cursor: default; }
+.shoot-btn { margin-left: auto; font-size: 1.05rem; padding-inline: 26px; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.commentary { color: #f3ecdd; margin: 12px 2px 0; min-height: 1.5em; font-weight: 500; }
+.how { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+
+.game-wrap:fullscreen {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-radius: 0; padding: 12px; background: #11140f;
+}
+.game-wrap:fullscreen #game { width: min(100%, calc((100vh - 170px) * 16 / 9)); }
+.game-wrap:fullscreen .game-controls, .game-wrap:fullscreen .commentary { width: min(100%, calc((100vh - 170px) * 16 / 9)); }
+
+@media (max-width: 720px) {
+  .game-wrap { padding: 8px; border-radius: 14px; margin-inline: -8px; }
+  .sb-score { font-size: 1.6rem; }
+  .game-controls .btn { padding: 9px 12px; font-size: .9rem; }
+  .shoot-btn { flex: 1 1 100%; order: -1; margin-left: 0; padding: 14px; font-size: 1.15rem; }
+}

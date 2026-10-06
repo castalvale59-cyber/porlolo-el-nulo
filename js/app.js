@@ -5,7 +5,7 @@
 
 /* ---------------- Sauvegarde ---------------- */
 const KEY = "porlolo:v1";
-const defaults = () => ({ niveau: 1, maitrise: {}, seances: {}, quizBest: 0, sessions: [], prog: null });
+const defaults = () => ({ niveau: 1, maitrise: {}, seances: {}, quizBest: 0, sessions: [], prog: null, jeu: {} });
 
 function load() {
   try {
@@ -67,14 +67,15 @@ function startTicker() {
 }
 
 /* ---------------- Navigation ---------------- */
-const VIEWS = ["accueil", "techniques", "programme", "progression", "regles", "quiz"];
+const VIEWS = ["accueil", "techniques", "programme", "progression", "regles", "quiz", "jouer"];
 const RENDER = {
   accueil: renderAccueil,
   techniques: renderTechniques,
   programme: renderProgramme,
   progression: renderProgression,
   regles: renderRegles,
-  quiz: renderQuiz
+  quiz: renderQuiz,
+  jouer: () => Babyfoot.show()
 };
 
 function route() {
@@ -83,6 +84,7 @@ function route() {
   document.querySelectorAll("[data-nav]").forEach((a) => {
     if (a.dataset.nav === v) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
   });
+  if (v !== "jouer") Babyfoot.hide();
   RENDER[v]();
   window.scrollTo({ top: 0 });
 }
@@ -316,6 +318,8 @@ const BADGES = [
   { ico: "📊", nom: "Statisticien", how: "Noter 5 séances ou matchs", ok: () => S.sessions.length >= 5 },
   { ico: "🏆", nom: "Vainqueur", how: "Gagner 10 matchs notés", ok: () => victoires() >= 10 },
   { ico: "🧠", nom: "Encyclopédie", how: "Sans faute au quiz", ok: () => S.quizBest >= QUIZ.length },
+  { ico: "🤖", nom: "Tombeur de bots", how: "Battre le bot « Habitué du bar »", ok: () => S.jeu && S.jeu[2] && S.jeu[2].v > 0 },
+  { ico: "👑", nom: "Tombeur de légende", how: "Battre le bot « Légende Bonzini »", ok: () => S.jeu && S.jeu[3] && S.jeu[3].v > 0 },
   { ico: "😎", nom: "Anti-Lolo", how: "Nulomètre à 20 % ou moins", ok: () => nuloScore() <= 20 }
 ];
 
