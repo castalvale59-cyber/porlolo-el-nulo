@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PorLolo el nulo</title>
+  <meta name="description" content="Le centre de formation pour arrêter d'être nul au babyfoot : techniques, programme d'entraînement, suivi de progression, règles et quiz.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#accueil" class="logo" aria-label="PorLolo el nulo, accueil">
+      <span class="logo-ball" aria-hidden="true"></span>
+      Por<span class="logo-lolo">Lolo</span> <em>el nulo</em>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#accueil" data-nav="accueil">Accueil</a>
+      <a href="#techniques" data-nav="techniques">Techniques</a>
+      <a href="#programme" data-nav="programme">Programme</a>
+      <a href="#progression" data-nav="progression">Progression</a>
+      <a href="#regles" data-nav="regles">Règles</a>
+      <a href="#quiz" data-nav="quiz">Quiz</a>
+    </nav>
+  </header>
+
+  <div class="ticker" role="status" aria-live="polite">
+    <span class="ticker-tag">Breaking news</span>
+    <span class="ticker-text" id="vanne"></span>
+  </div>
+
+  <main id="app">
+    <!-- ================= ACCUEIL ================= -->
+    <section class="view" data-view="accueil">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="kicker">Centre de formation (pas du tout) officiel</p>
+          <h1 class="hero-title">Por<span>Lolo</span><br><em>el nulo</em></h1>
+          <p class="lead">Toutes les techniques du babyfoot sur Bonzini, un programme de 4 semaines et un suivi de ta progression.
+            Objectif : que plus personne ne te confonde avec Lolo.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#techniques">Voir les techniques</a>
+            <a class="btn btn-ghost" href="#programme">Lancer mon programme</a>
+          </div>
+        </div>
+        <figure class="mascot" aria-label="Lolo, la mascotte, un petit joueur de babyfoot en sombrero">
+          <div class="bubble">¡Ay caramba, encore une gamelle !</div>
+          <svg viewBox="0 0 200 240" role="img" aria-hidden="true">
+            <rect x="0" y="118" width="200" height="12" rx="6" class="m-rod"/>
+            <ellipse cx="100" cy="56" rx="78" ry="14" class="m-hat"/>
+            <path d="M68 56 Q72 14 100 12 Q128 14 132 56 Z" class="m-hat"/>
+            <path d="M70 46 Q100 38 130 46" class="m-hatband"/>
+            <circle cx="100" cy="84" r="28" class="m-skin"/>
+            <circle cx="90" cy="80" r="4" class="m-eye"/>
+            <circle cx="110" cy="80" r="4" class="m-eye"/>
+            <path d="M88 100 Q100 92 112 100" class="m-mouth"/>
+            <path d="M127 70 q6 10 0 14 q-6 -4 0 -14z" class="m-sweat"/>
+            <rect x="70" y="110" width="60" height="70" rx="14" class="m-shirt"/>
+            <text x="100" y="160" text-anchor="middle" class="m-num">0</text>
+            <rect x="80" y="178" width="40" height="40" rx="6" class="m-short"/>
+            <rect x="78" y="214" width="44" height="18" rx="5" class="m-foot"/>
+          </svg>
+          <figcaption>Lolo, notre mascotte. Pas un modèle.</figcaption>
+        </figure>
+      </div>
+
+      <div class="panel level-panel">
+        <div class="level-head">
+          <h2>Choisis ton niveau</h2>
+          <p class="muted">Fais glisser le joueur sur la barre. Ça adapte les techniques conseillées et ton programme.</p>
+        </div>
+        <div class="rod-slider">
+          <input type="range" min="1" max="5" step="1" id="niveau" aria-label="Ton niveau au babyfoot">
+          <div class="rod-ticks" id="rodTicks"></div>
+        </div>
+        <div class="level-result">
+          <p class="level-name" id="niveauNom"></p>
+          <p class="level-desc" id="niveauDesc"></p>
+        </div>
+      </div>
+
+      <div class="stat-row" id="homeStats"></div>
+
+      <div class="panel">
+        <h2>Par où commencer ?</h2>
+        <ol class="steps">
+          <li><strong>Choisis ton niveau</strong> juste au-dessus. Sois honnête, on ne le dira pas à Lolo.</li>
+          <li><strong>Lis les techniques conseillées</strong> et regarde les schémas animés : la balle montre le trajet.</li>
+          <li><strong>Suis le programme</strong> 3 séances par semaine et coche chaque séance faite.</li>
+          <li><strong>Note tes matchs</strong> dans Progression et regarde ton Nulomètre descendre.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= TECHNIQUES ================= -->
+    <section class="view" data-view="techniques" hidden>
+      <div class="view-head">
+        <h2 class="view-title">Les techniques</h2>
+        <p class="muted">Tout ce qu'il faut savoir, de la prise de poignée au snake. Schémas vus de dessus : <span class="dot dot-red"></span> toi, tu attaques vers la droite, <span class="dot dot-blue"></span> l'adversaire.</p>
+      </div>
+      <div class="filters">
+        <div class="chips" id="catChips" role="group" aria-label="Catégories"></div>
+        <div class="filter-line">
+          <label class="search">
+            <span class="sr-only">Rechercher une technique</span>
+            <input type="search" id="search" placeholder="Rechercher (pince, snake, bande…)">
+          </label>
+          <select id="posteFilter" aria-label="Filtrer par poste">
+            <option value="">Tous les postes</option>
+            <option value="Attaque">Attaque</option>
+            <option value="Milieu">Milieu</option>
+            <option value="Défense">Défense</option>
+          </select>
+          <label class="toggle"><input type="checkbox" id="monNiveau"> Seulement mon niveau</label>
+        </div>
+      </div>
+      <p class="result-count" id="techCount"></p>
+      <div class="tech-grid" id="techGrid"></div>
+    </section>
+
+    <!-- ================= PROGRAMME ================= -->
+    <section class="view" data-view="programme" hidden>
+      <div class="view-head">
+        <h2 class="view-title">Programme d'entraînement</h2>
+        <p class="muted">4 semaines, 3 séances par semaine, environ 35-40 minutes chacune. Le programme est choisi selon ton niveau, mais tu peux changer.</p>
+      </div>
+      <div class="chips" id="progTabs" role="tablist" aria-label="Programmes"></div>
+      <div id="progBody"></div>
+    </section>
+
+    <!-- ================= PROGRESSION ================= -->
+    <section class="view" data-view="progression" hidden>
+      <div class="view-head">
+        <h2 class="view-title">Ta progression</h2>
+        <p class="muted">Tout est enregistré dans ce navigateur, sur cet appareil.</p>
+      </div>
+
+      <div class="prog-top">
+        <div class="panel nulometre" id="nulometre"></div>
+        <div class="panel">
+          <h3>Techniques maîtrisées</h3>
+          <div id="catBars"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Noter une séance ou un match</h3>
+        <form id="sessionForm" class="session-form">
+          <label>Date <input type="date" name="date" required></label>
+          <label>Type
+            <select name="type">
+              <option>Match</option>
+              <option>Entraînement</option>
+            </select>
+          </label>
+          <label>Tirs tentés <input type="number" name="tirs" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Tirs marqués <input type="number" name="reussis" min="0" inputmode="numeric" placeholder="0"></label>
+          <label class="match-only">Buts pour <input type="number" name="pour" min="0" inputmode="numeric" placeholder="0"></label>
+          <label class="match-only">Buts contre <input type="number" name="contre" min="0" inputmode="numeric" placeholder="0"></label>
+          <label class="wide">Adversaire / notes <input type="text" name="notes" maxlength="80" placeholder="ex. contre Lolo, 10-0, il a fait la Fanny"></label>
+          <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </form>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </div>
+
+      <div class="stat-row" id="sessionStats"></div>
+
+      <div class="panel">
+        <h3>Taux de réussite des tirs</h3>
+        <div id="chart" class="chart"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Historique</h3>
+        <div id="sessionList"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Badges</h3>
+        <div class="badges" id="badges"></div>
+      </div>
+
+      <div class="panel danger-zone">
+        <h3>Sauvegarde</h3>
+        <p class="muted">Exporte ta progression pour la garder ou la mettre sur un autre appareil.</p>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="exportBtn" type="button">Exporter (.json)</button>
+          <label class="btn btn-ghost file-btn">Importer<input type="file" id="importFile" accept="application/json"></label>
+          <button class="btn btn-danger" id="resetBtn" type="button">Tout effacer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RÈGLES ================= -->
+    <section class="view" data-view="regles" hidden>
+      <div class="view-head">
+        <h2 class="view-title">Les règles</h2>
+        <p class="muted">Règles de bar (à annoncer AVANT la partie pour éviter les drames) et règles officielles de compétition (FFFT / ITSF).</p>
+      </div>
+      <div class="rules-cols">
+        <div class="panel">
+          <h3><span aria-hidden="true">🍺</span> Règles de bar</h3>
+          <div id="reglesBar" class="rules"></div>
+        </div>
+        <div class="panel">
+          <h3><span aria-hidden="true">🏆</span> Règles officielles</h3>
+          <div id="reglesOff" class="rules"></div>
+          <p class="note">Résumé simplifié. Les règlements évoluent : vérifie la version à jour sur le site de la FFFT ou de l'ITSF avant un tournoi.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <h3><span aria-hidden="true">📖</span> Lexique du babyfootiste</h3>
+        <dl class="lexique" id="lexique"></dl>
+      </div>
+    </section>
+
+    <!-- ================= QUIZ ================= -->
+    <section class="view" data-view="quiz" hidden>
+      <div class="view-head">
+        <h2 class="view-title">Le quiz anti-Lolo</h2>
+        <p class="muted">16 questions sur les techniques et les règles. Lolo a fait 2/16. Fais mieux.</p>
+      </div>
+      <div class="panel quiz" id="quizBox"></div>
+    </section>
+  </main>
+
+  <dialog class="zoom" id="zoom" aria-labelledby="zoomTitle"><div class="zoom-inner">
+    <div class="zoom-head">
+      <h3 id="zoomTitle"></h3>
+      <button type="button" class="zoom-close" id="zoomClose" aria-label="Fermer">✕</button>
+    </div>
+    <p class="zoom-resume" id="zoomResume"></p>
+    <div class="zoom-diag" id="zoomDiag"></div>
+    <div class="zoom-controls" role="group" aria-label="Vitesse de l'animation">
+      <span class="muted">Vitesse :</span>
+      <button type="button" class="chip" data-speed="2.6" aria-pressed="true">Normale</button>
+      <button type="button" class="chip" data-speed="5" aria-pressed="false">Ralenti</button>
+      <button type="button" class="chip" data-speed="9" aria-pressed="false">Très lent (mode Lolo)</button>
+    </div>
+  </div></dialog>
+
+  <footer class="footer">
+    <p><strong>PorLolo el nulo</strong> · Fait avec amour (et un peu de moquerie) pour que Lolo arrête de passer sous la table.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
